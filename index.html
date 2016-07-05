@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script type="text/javascript" src="phaser.min.js"></script>
+	<script type="text/javascript" src="PlayStationController.js"></script>
+	<script type="text/javascript" src="titlescreen.js"></script>
+	<script type="text/javascript" src="game.js"></script>
+	<script type="text/javascript" src="bullets.js"></script>
+</head>
+
+<body>
+	<div id="game"></div>
+
+	<script type="text/javascript">
+		var game = new Phaser.Game(1000, 563, Phaser.CANVAS, 'game');
+
+		game.state.add('titlescreen', Soccer.titlescreen);
+		game.state.add('game', Soccer.game);
+
+		game.state.start('titlescreen');
+	</script>
+</body>
+
+</html>
