@@ -69,6 +69,8 @@ var maxvelocity = 2000;
 var input;
 var physics;
 
+var pointscap = 20;
+
 function preloadfunc() {
 
     // game.load.image('background', 'assets/games/starstruck/background2.png');
@@ -144,7 +146,7 @@ function createfunc() {
         player[x].body.addCapsule(53 - 16, 8, -3, 0, Math.PI / 2);
 
         player[x].animations.add('left', [0, 1, 2, 3, 4, 5, 6, 7], animframerate, true);
-        player[x].animations.add('right', [8, 9, 10, 11, 12, 13, 14, 15], animframerate, true);
+        
         player[x].animations.add('leftstill', [17], animframerate, true);
         player[x].animations.add('rightstill', [16], animframerate, true);
 
@@ -249,6 +251,10 @@ function updatePlayerMovement(x) {
 
     if (pad[x].buttonValue(0) == 1) {
         jump(x);
+    }
+
+    if(pad[x].buttonValue(1) == 1) {
+        endGame(x);
     }
 
     if (pad[x].buttonValue(5) == 1 && Math.abs(player[x].x - ball.x) < kickradius && Math.abs(player[x].y - ball.y) < kickradius) {
@@ -357,7 +363,14 @@ function Score(x) {
     scoretext[0].text = score[0];
     scoretext[1].text = score[1];
     playSound('score');
-    resetGame();
+
+    if(score[0] >= pointscap) {
+        endGame(0);
+    } else if(score[1] >= pointscap) {
+        endGame(1);
+    } else {
+        resetGame();
+    }   
 }
 
 function resetGame() {
@@ -494,4 +507,11 @@ function stopAllSounds() {
         sounds[l].stop();
         l++;
     }
+}
+
+var winner;
+
+function endGame(x) {
+    winner = x;
+    game.state.start('end');
 }

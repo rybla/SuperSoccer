@@ -6,7 +6,7 @@
 	<script type="text/javascript" src="PlayStationController.js"></script>
 	<script type="text/javascript" src="titlescreen.js"></script>
 	<script type="text/javascript" src="game.js"></script>
-	<script type="text/javascript" src="bullets.js"></script>
+	<script type="text/javascript" src="endingscreen.js"></script>
 </head>
 
 <body>
@@ -17,6 +17,7 @@
 
 		game.state.add('titlescreen', Soccer.titlescreen);
 		game.state.add('game', Soccer.game);
+		game.state.add('end', Soccer.endingscreen);
 
 		game.state.start('titlescreen');
 	</script>
