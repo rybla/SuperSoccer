@@ -9,6 +9,6 @@ A JS game using phaser.io that requires PS3 controllers to play. 2-Player
 
 ## Objectives
 - Get ball into opponent's goal
-- Have the most points (no point limit yet)
+- Score 21 points before your opponent!
 - Have fun (of course)
 - Fork this game and add your own things
