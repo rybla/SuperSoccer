@@ -249,19 +249,19 @@ var kickradius = 50;
 
 function updatePlayerMovement(x) {
 
-    if (pad[x].buttonValue(0) == 1) {
+    if (pad[x].buttonValue(PSController.X) == 1) {
         jump(x);
     }
 
-    if(pad[x].buttonValue(1) == 1) {
-        endGame(x);
-    }
+    // if(pad[x].buttonValue(1) == 1) {
+    //     endGame(x);
+    // }
 
-    if (pad[x].buttonValue(5) == 1 && Math.abs(player[x].x - ball.x) < kickradius && Math.abs(player[x].y - ball.y) < kickradius) {
+    if (pad[x].buttonValue(PSController.RIGHT_BUMPER) == 1 && Math.abs(player[x].x - ball.x) < kickradius && Math.abs(player[x].y - ball.y) < kickradius) {
         processKick(x);
     }
 
-    if(pad[x].buttonValue(4) == 1 && boostcooldown[x] == 0) {
+    if(pad[x].buttonValue(PSController.LEFT_BUMPER) == 1 && boostcooldown[x] == 0) {
         boost(x);
     }
 
