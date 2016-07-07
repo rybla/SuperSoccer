@@ -146,7 +146,7 @@ function createfunc() {
         player[x].body.addCapsule(53 - 16, 8, -3, 0, Math.PI / 2);
 
         player[x].animations.add('left', [0, 1, 2, 3, 4, 5, 6, 7], animframerate, true);
-        
+        player[x].animations.add('right', [8, 9, 10, 11, 12, 13, 14, 15], animframerate, true);
         player[x].animations.add('leftstill', [17], animframerate, true);
         player[x].animations.add('rightstill', [16], animframerate, true);
 
@@ -290,7 +290,7 @@ function updatePlayerMovement(x) {
             player[x].animations.stop();
 
             if (facing[x] == 'left') {
-                player[x].animations.play('leftstill');
+                player[x].animations.play('leftstill', true, false);
             } else {
                 player[x].animations.play('rightstill', true, false);
             }
