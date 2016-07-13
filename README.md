@@ -6,6 +6,7 @@ A JS game using phaser.io that requires PS3 controllers to play. 2-Player
 - Rocket Jump: X (infinite use)
 - Boost: Left bumper (multiplies current speed) (doesn't reset cooldown on point score)
 - Kick: Right bumper (kicks ball away from you and slightly upward)
+- Downkick: A kick while the ball is underneath you will apply extra force
 
 ## Objectives
 - Get ball into opponent's goal

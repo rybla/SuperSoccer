@@ -47,6 +47,8 @@ var emitter = [0, 0];
 var boostchargedemitter = [0, 0];
 var ballemitter = [0, 0];
 
+var debugBodies = false;
+
 // axis(2) (-1)<– –>(1)
 // axis(3) (1)v ^(-1)
 
@@ -128,7 +130,7 @@ function createfunc() {
     game.time.desiredFps = 30;
 
     ground = game.add.sprite(500, 437 + (126 / 2), 'ground');
-    physics.enable(ground, false);
+    physics.enable(ground, debugBodies);
     ground.body.static = true;
     ground.body.collideWorldBounds = true;
 
@@ -137,7 +139,7 @@ function createfunc() {
     var x = 0;
     while (x < 2) {
         player[x] = game.add.sprite(startx[x], starty, 'player' + (x + 1));
-        physics.enable(player[x], false);
+        physics.enable(player[x], debugBodies);
         player[x].body.collideWorldBounds = true;
         player[x].body.fixedRotation = true;
         player[x].body.mass = 5;
@@ -174,7 +176,7 @@ function createfunc() {
 
     // ball
     ball = game.add.sprite(500, game.halfHeight, 'ball');
-    physics.enable(ball, false);
+    physics.enable(ball, debugBodies);
     ball.body.collideWorldBounds = true;
     ball.body.mass = 1;
     ball.body.clearShapes();
@@ -196,7 +198,7 @@ function createfunc() {
     var j = 0;
     while (j < 2) {
         goal[j] = game.add.sprite(0 + (1000 * j), game.height - 300, 'goal' + (j + 1))
-        physics.enable(goal[j], false);
+        physics.enable(goal[j], debugBodies);
         goal[j].body.collideWorldBounds = false;
         goal[j].body.static = true;
         j++;
