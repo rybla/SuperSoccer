@@ -69,7 +69,7 @@ var maxvelocity = 2000;
 var input;
 var physics;
 
-var pointscap = 20;
+var pointscap = 21;
 
 function preloadfunc() {
 
