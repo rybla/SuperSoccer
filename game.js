@@ -82,7 +82,7 @@ function preloadfunc() {
     game.load.image('cursor2', 'assets/sprites/cursor2.png');
     game.load.image('background', 'assets/environment/background.jpg');
     game.load.image('ground', 'assets/environment/ground.png');
-    game.load.image('ball', 'assets/sprites/ball.png');
+    game.load.image('ball', 'assets/sprites/ball1.png');
 
     game.load.image('rocketdust10', 'assets/particles/rocketdust10.png');
     game.load.image('rocketdust20', 'assets/particles/rocketdust20.png');
@@ -244,6 +244,10 @@ function updatefunc() {
             ballemitter[lastkick].start(true, 500, null, 5);
         }
         
+        if(ball.body.y > 500) {
+            resetGame();
+        }
+
     }
 }
 
@@ -251,15 +255,18 @@ var kickradius = 50;
 
 function updatePlayerMovement(x) {
 
-    if (pad[x].buttonValue(PSController.X) == 1) {
+    if (pad[x].axis(PSController.LEFT_JOYSTICK_VERTICAL) < 0) {
         jump(x);
+    }
+    if (pad[x].axis(PSController.LEFT_JOYSTICK_VERTICAL) > 0) {
+        boostdown(x);
     }
 
     // if(pad[x].buttonValue(1) == 1) {
     //     endGame(x);
     // }
 
-    if (pad[x].buttonValue(PSController.RIGHT_BUMPER) == 1 && Math.abs(player[x].x - ball.x) < kickradius && Math.abs(player[x].y - ball.y) < kickradius) {
+    if (pad[x].buttonValue(PSController.X) == 1 && Math.abs(player[x].x - ball.x) < kickradius && Math.abs(player[x].y - ball.y) < kickradius) {
         processKick(x);
     }
 
@@ -315,6 +322,13 @@ function jump(x) {
     if(player[x].body.velocity.y < -jumpspeed);
     player[x].body.velocity.y = -jumpspeed;
     shootDust(x);
+}
+
+function boostdown(x) {
+    if(player[x].body.velocity.y > jumpspeed);
+    player[x].body.velocity.y = jumpspeed;
+    shootDust(x);
+
 }
 
 function boost(x) {
