@@ -31,7 +31,32 @@
 		4,5
 	],
 
-	PS2: [],
+	PS2: [
+		1,0,2,5,
+		8,9,
+		9,9,9,9, //dpads for ps2 actually works as a axis 9. P.S. values below are rounded
+		/*
+		Idle:		3.2857
+		Up:			1
+		Right:		-0.42857
+		Down:		0
+		Left:		0.714
+		this program does not uses Dpads, so it will be fine, but if future programs uses this, it might cause error for ps2 controller.
+		*/
+		0,1,2,3,
+		4,5,
+		6,7
+	],
+
+	xboxOne: [
+		1,0,3,2,
+		8,9,
+		12,15,17,18,
+		3,1,0,2,
+		6,7,
+		4,5
+	],
+
 
 	/* 
 	running this method will start the the system using the given controller values.

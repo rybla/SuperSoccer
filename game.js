@@ -26,7 +26,7 @@ Soccer.game.prototype = {
 var player = [0, 0];
 var startx = [100, 900];
 var starty = 410;
-var facing = ['right', 'left'];
+var facing = ['idle', 'idle'];
 var pad = [0, 0];
 var boostcooldown = [0, 0];
 
@@ -228,6 +228,8 @@ var countDownTimer = 0;
 
 function updatefunc() {
 
+    debug();
+
     if (countingDown) {
         // console.log("Counting Down"); 
         console.log("Count: " + countDownCount);
@@ -393,6 +395,11 @@ function resetGame() {
     player[0].reset(startx[0],starty);
     player[1].reset(startx[1],starty);
     player[1].animations.play('leftstill');
+    player[0].animations.play('rightstill');
+    facing[0] = 'idle';
+    facing[1] = 'idle';
+
+
 
     ball.reset(500,0);
 
@@ -530,4 +537,13 @@ var winner;
 function endGame(x) {
     winner = x;
     game.state.start('end');
+}
+
+
+function debug()
+{
+    //this is where I can put some debug log statements
+
+    console.log('facing: ' + facing[0]);
+
 }
