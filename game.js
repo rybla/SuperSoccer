@@ -121,7 +121,7 @@ function createfunc() {
     pad[0] = game.input.gamepad.pad1;
     pad[1] = game.input.gamepad.pad2;
 
-    input = PSController.startController(PSController.PS3);
+    input = PSController.startController(PSController.xboxOne);
 
     // setup
     game.physics.startSystem(Phaser.Physics.P2JS);
@@ -257,12 +257,16 @@ var kickradius = 50;
 
 function updatePlayerMovement(x) {
 
-    if (pad[x].axis(PSController.LEFT_JOYSTICK_VERTICAL) < 0) {
+    // if (pad[x].axis(PSController.LEFT_JOYSTICK_VERTICAL) < 0) {
+    //     jump(x);
+    // }
+    if (pad[x].buttonValue(PSController.RIGHT_TRIGGER) == 1) {
         jump(x);
     }
-    if (pad[x].axis(PSController.LEFT_JOYSTICK_VERTICAL) > 0) {
-        boostdown(x);
-    }
+
+    // if (pad[x].axis(PSController.LEFT_JOYSTICK_VERTICAL) > 0) {
+    //     boostdown(x);
+    // }
 
     // if(pad[x].buttonValue(1) == 1) {
     //     endGame(x);
